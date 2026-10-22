@@ -3,6 +3,41 @@
 These schemas define expected structure. Repositories may add fields but should
 retain the core semantics.
 
+## Canonical output layout
+
+Unless the repository already has an established agent-skill root, all output
+lives under `.agents/skills/`:
+
+```text
+<repository-root>/
+  .agents/
+    skills/
+      project/
+        SKILL.md              # top-level project router
+      <approved-skill>/
+        SKILL.md
+      knowledge/
+        analysis-charter.yaml
+        repository-map.yaml
+        concern-map.yaml
+        documentation-audit.md
+        skill-catalogue.yaml
+        unresolved-questions.md
+        bootstrap-report.md
+```
+
+Two properties of this layout are load-bearing:
+
+1. **Every skill is exactly one level under `.agents/skills/`.** Agent harnesses
+   discover skills non-recursively as `<skills-root>/<skill-name>/SKILL.md`.
+   A nested layout such as `.agents/skills/project/<id>/SKILL.md` is not
+   discovered at all.
+2. **`knowledge/` contains no `SKILL.md`.** It is inert data for agents to read
+   by path, not a skill, and must not register as one.
+
+Skill-to-skill links therefore stay `../<skill-id>/SKILL.md`. Links to
+repository files use the link base defined in the skill template.
+
 ## Analysis charter
 
 ```yaml
@@ -27,8 +62,8 @@ technology:
 
 analysis:
   mode: initial-bootstrap
-  skill_root: ./skills/project
-  knowledge_root: ./knowledge
+  skill_root: .agents/skills
+  knowledge_root: .agents/skills/knowledge
 
   include:
     - apps

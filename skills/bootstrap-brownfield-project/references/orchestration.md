@@ -36,7 +36,7 @@ Inspect enough of the repository to determine:
 Create:
 
 ```text
-./knowledge/analysis-charter.yaml
+.agents/skills/knowledge/analysis-charter.yaml
 ````
 
 Use the schema in the shared schemas reference.
@@ -102,7 +102,7 @@ For each structural unit, capture:
 Create:
 
 ```text
-./knowledge/repository-map.yaml
+.agents/skills/knowledge/repository-map.yaml
 ```
 
 Do not create one skill per mapped unit.
@@ -141,7 +141,7 @@ For each significant document, determine:
 Create:
 
 ```text
-./knowledge/documentation-audit.md
+.agents/skills/knowledge/documentation-audit.md
 ```
 
 Do not mark a document stale based solely on age.
@@ -239,7 +239,7 @@ risk or project-specific behaviour.
 Merge the focused investigation results into:
 
 ```text
-./knowledge/concern-map.yaml
+.agents/skills/knowledge/concern-map.yaml
 ```
 
 The concern map must represent relationships that the directory tree cannot.
@@ -284,7 +284,7 @@ Score every candidate using the shared skill-selection reference.
 Create:
 
 ```text
-./knowledge/skill-catalogue.yaml
+.agents/skills/knowledge/skill-catalogue.yaml
 ```
 
 Record candidates that are:
@@ -357,6 +357,15 @@ evidence.
 
 Use the shared skill template.
 
+Write each skill to:
+
+```text
+.agents/skills/<skill-id>/SKILL.md
+```
+
+Exactly one directory level under the skill root. Never group skills under an
+intermediate directory; harnesses do not discover them there.
+
 Each skill must:
 
 * have a routing-oriented description;
@@ -377,7 +386,11 @@ Each skill must:
 
 ## Phase 10: Create the project router
 
-Create the top-level project skill.
+Create the top-level project skill at:
+
+```text
+.agents/skills/project/SKILL.md
+```
 
 It must route by:
 
@@ -402,7 +415,7 @@ The router should also explain what to do when:
 Create:
 
 ```text
-./knowledge/unresolved-questions.md
+.agents/skills/knowledge/unresolved-questions.md
 ```
 
 Record material uncertainty including:
@@ -435,7 +448,7 @@ Do not declare success while material unsupported claims remain.
 Create:
 
 ```text
-./knowledge/bootstrap-report.md
+.agents/skills/knowledge/bootstrap-report.md
 ```
 
 Include:

@@ -82,17 +82,21 @@ actually revalidated.
 
 ## Required inputs
 
-Inspect:
+Inspect, under the repository's agent-skill root (`.agents/skills/` by default):
 
-* the project router;
-* the skill catalogue;
-* relevant skill files;
-* repository map entries;
-* concern map entries;
-* unresolved questions;
+* the project router at `project/SKILL.md`;
+* the skill catalogue at `knowledge/skill-catalogue.yaml`;
+* relevant skill files at `<skill-id>/SKILL.md`;
+* repository map entries in `knowledge/repository-map.yaml`;
+* concern map entries in `knowledge/concern-map.yaml`;
+* unresolved questions in `knowledge/unresolved-questions.md`;
 * current Git commit;
 * changed files since relevant verification commits where available;
 * current repository evidence.
+
+The canonical layout is defined in
+`../project-skill-toolkit/references/schemas.md`. If the repository records a
+different skill root in its analysis charter, use that instead.
 
 If one or more supporting knowledge files do not exist, reconstruct only what is
 required for the requested maintenance.

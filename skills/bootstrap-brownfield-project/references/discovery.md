@@ -19,6 +19,12 @@ docs/**
 adr/**
 decisions/**
 .github/copilot-instructions.md
+.agents/skills/**
+.agent/skills/**
+.omp/skills/**
+.claude/skills/**
+.codex/skills/**
+.github/skills/**
 
 package.json
 pnpm-workspace.yaml
@@ -64,6 +70,10 @@ justfile
 ````
 
 This list is illustrative, not exhaustive.
+
+If a catalogue already exists at one of the `.agents`/`.omp`/`.claude` skill
+roots above, treat it as the output target rather than choosing a new one.
+Record the chosen root in the analysis charter.
 
 ## Generated and external areas
 

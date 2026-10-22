@@ -108,16 +108,16 @@ Record the chosen output structure in the analysis charter.
 
 ## Required outputs
 
-Unless an established repository convention replaces them, create:
+Unless an established repository convention replaces them, create everything
+under the repository's agent-skill root, `.agents/skills/`:
 
 ```text
-./
-  skills/
-    project/
-      SKILL.md
+./.agents/skills/
+  project/
+    SKILL.md
 
-      <approved-skill>/
-        SKILL.md
+  <approved-skill>/
+    SKILL.md
 
   knowledge/
     analysis-charter.yaml
@@ -127,7 +127,15 @@ Unless an established repository convention replaces them, create:
     skill-catalogue.yaml
     unresolved-questions.md
     bootstrap-report.md
-````
+```
+
+Skills sit directly under `.agents/skills/`, never under a grouping directory.
+Harnesses discover skills non-recursively as `<skills-root>/<name>/SKILL.md`, so
+`.agents/skills/project/<approved-skill>/SKILL.md` would never be discovered.
+`knowledge/` holds no `SKILL.md` and is read by path instead.
+
+The full layout, including the link base for repository files, is defined in
+`../project-skill-toolkit/references/schemas.md`.
 
 The process is incomplete until it has produced:
 

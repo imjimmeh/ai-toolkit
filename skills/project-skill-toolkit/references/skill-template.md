@@ -5,6 +5,22 @@ Use this template for generated repository-specific skills.
 Remove sections that genuinely do not apply, but preserve the routing,
 boundaries, evidence, and validation sections.
 
+## Link base
+
+A skill file lives at `.agents/skills/<skill-id>/SKILL.md`, three levels below
+the repository root. Resolve links accordingly:
+
+| Target | Form | Example |
+|---|---|---|
+| another skill | `../<skill-id>/SKILL.md` | `../authentication/SKILL.md` |
+| a knowledge artefact | `../knowledge/<file>` | `../knowledge/concern-map.yaml` |
+| a file inside this skill | `<relative-path>` | `assets/schema.sql` |
+| any other repository file | `/<path-from-root>` | `/docs/architecture.md` |
+
+Do not write bare repository-relative links such as `docs/example.md`: from a
+skill directory they resolve to `.agents/skills/<skill-id>/docs/example.md`,
+which does not exist.
+
 ```markdown
 ---
 name: <skill-id>
@@ -72,8 +88,8 @@ This area does not own:
 
 ## Important entry points
 
-- [`path`](relative-link): explanation.
-- [`path`](relative-link): explanation.
+- [`path`](/path-from-root): explanation.
+- [`path`](/path-from-root): explanation.
 
 ## Dependencies and consumers
 
@@ -148,7 +164,7 @@ Do not copy these patterns into new code unless compatibility requires it.
 
 ## Existing authoritative documentation
 
-* [`docs/example.md`](relative-link)
+* [`/docs/example.md`](/docs/example.md)
 
   * Covers ...
   * Treat as authoritative for ...
@@ -165,8 +181,8 @@ This skill was verified against commit `<commit>`.
 
 Primary evidence:
 
-* [`path`](relative-link)
-* [`path`](relative-link)
+* [`path`](/path-from-root)
+* [`path`](/path-from-root)
 
 ````
 

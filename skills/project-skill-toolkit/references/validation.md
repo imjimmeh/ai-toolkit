@@ -4,6 +4,20 @@
 
 Validate both the human-readable skills and the supporting knowledge artefacts.
 
+## Layout checks
+
+Confirm the catalogue is discoverable:
+
+- every skill file is exactly one directory level under the skill root
+  (`.agents/skills/<skill-id>/SKILL.md`), not nested under a grouping directory;
+- every skill directory name matches its front-matter `name`;
+- `knowledge/` contains no `SKILL.md`, so it does not register as a skill;
+- the skill root recorded in the analysis charter matches the paths actually
+  written.
+
+A nested or grouped layout is a failure, not a warning: harnesses scan skill
+roots non-recursively, so those skills are never discovered and never routed.
+
 ## Structural checks
 
 Confirm:
@@ -22,7 +36,9 @@ Confirm:
 Confirm:
 
 - related skill IDs exist;
-- repository-relative links resolve;
+- skill-to-skill links use `../<skill-id>/SKILL.md` and resolve;
+- repository-file links are root-anchored (`/path`) or skill-relative and resolve;
+- no link relies on a bare repository-relative path such as `docs/example.md`;
 - referenced files exist or are explicitly historical;
 - path globs are plausible;
 - documentation links exist;
@@ -129,8 +145,8 @@ Where supported, implement scripts to check:
 * unique names;
 * related-skill references;
 * catalogue-to-file correspondence;
-* relative links;
-* repository paths;
+* link resolution against the documented link base;
+* flat skill layout under the recorded skill root;
 * consistent verification metadata;
 * empty sections;
 * placeholder markers such as `<...>`.

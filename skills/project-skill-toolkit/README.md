@@ -19,3 +19,10 @@ The operational skills reference these files to avoid duplicating:
 
 Repositories may extend these references with local conventions, but should avoid
 copying and diverging them across the bootstrap and maintenance skills.
+
+## Canonical layout
+
+Output paths are defined once, in
+[`references/schemas.md`](references/schemas.md): skills at
+`.agents/skills/<skill-id>/SKILL.md`, knowledge artefacts at
+`.agents/skills/knowledge/`. Do not restate them here.
